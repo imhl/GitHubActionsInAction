@@ -1,0 +1,21 @@
+name: test env variables
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: setup the first value
+        id: step-one
+        run: |
+          echo "action_state=yellow" >> "$GITHUB_ENV"
+
+      - name: retrieve the value
+        run: |
+          echo "${{env.action_state}}"
+
+  
